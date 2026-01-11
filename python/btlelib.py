@@ -360,6 +360,23 @@ def btle_tx(pdu_bit, *argv): # 1st arg: pdu_bit. 2nd arg: channel_number (if pre
   # return iq
   return cos_out_fixed_point, sin_out_fixed_point, phy_bit, phy_bit_upsample
 
+def hw_lod(x):
+    """Hardware-equivalent Leading One Detector."""
+    if x <= 0: return 0
+    return x.bit_length() - 1
+
+def hw_mitchell_db(amp_int):
+    """Mitchell's Log Approximation (Fixed-Point Q8.8)."""
+    if amp_int <= 0: return -100 * 256
+    k = hw_lod(amp_int)
+    if k >= 10:
+        m_fixed = (amp_int >> (k - 10)) - 1024
+    else:
+        m_fixed = (amp_int << (10 - k)) - 1024
+    log2_q10 = (k << 10) + m_fixed
+    # Constant 1541 = 20*log10(2)*2^8
+    return (log2_q10 * 1541) >> 10
+
 def gfsk_demodulation_fixed_point(i, q): # i and q are at symbol rate
   signal_for_decision = np.int32(i[0:-1])*np.int32(q[1:]) - np.int32(i[1:])*np.int32(q[0:-1])
 
@@ -408,6 +425,28 @@ def btle_rx(i, q, *argv): # i and q at sampling rate SAMPLE_PER_SYMBOL
   i = np.int16(i)
   q = np.int16(q)
 
+  ALPHA_SHIFT = 3  # Matches RTL Parameter
+  filter_acc = 0
+  num_samples = len(i)
+  rssi_db_history = np.zeros(num_samples)
+  i_fixed = np.int16(i)
+  q_fixed = np.int16(q)
+  
+  for idx in range(num_samples):
+    # Stage 1: Magnitude Approximation [5]
+    abs_i, abs_q = abs(int(i_fixed[idx])), abs(int(q_fixed[idx]))
+    mx, mn = max(abs_i, abs_q), min(abs_i, abs_q)
+    amp_est = (mx - (mx >> 5)) + ((mn >> 2) + (mn >> 3) + (mn >> 5))
+    # Stage 2 & 3: Mitchell Log & Scaling [2, 12]
+    db_val = hw_mitchell_db(amp_est)
+    # Stage 4: EMA Filter [6]
+    term_to_sub = filter_acc >> ALPHA_SHIFT
+    filter_acc = filter_acc + db_val - term_to_sub
+    
+    # Stabilized Output in Q8.8 [6]
+    rssi_db_history[idx] = (filter_acc >> ALPHA_SHIFT) / 256.0
+  
+  # You can now use rssi_db_history to report the power of the decoded packet.
   num_sample = len(i)
   num_bit = round(num_sample/SAMPLE_PER_SYMBOL)-1
   bit_all_sample_phase = np.zeros((SAMPLE_PER_SYMBOL, num_bit), dtype=np.int8)
