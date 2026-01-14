@@ -1,4 +1,4 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2" pages="3">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0" pages="4">
   <diagram id="aMardlpWkoD4cUSFt7Mj" name="LL ─ PHY ─ RF Interfaces">
     <mxGraphModel dx="744" dy="1616" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -1181,6 +1181,98 @@
         </mxCell>
         <mxCell id="uZeMSlc05MPdfO5bgTr--0" value="Reg_Map" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFE599;fillStyle=auto;gradientColor=none;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="z_vdXC77aUqaRDoaqI0S-1">
           <mxGeometry x="590.38" y="1565" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="g8IHj09uhRR2BFR6mjYH" name="Golden Model">
+    <mxGraphModel dx="1383" dy="1261" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Note: this is the original golden model that we are modifying to adapt our proposed architecture." vertex="1">
+          <mxGeometry height="30" width="560" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-10" edge="1" parent="1" source="tMnzrV0gcgn3_OZFiukO-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tMnzrV0gcgn3_OZFiukO-8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="btle_tx()" vertex="1">
+          <mxGeometry height="60" width="120" x="345" y="102" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-6" edge="1" parent="1" source="tMnzrV0gcgn3_OZFiukO-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tMnzrV0gcgn3_OZFiukO-4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-5" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;align=left;" value="&lt;ul&gt;&lt;li&gt;PDU Data (hex)&lt;/li&gt;&lt;li&gt;Channel Number (if any)&lt;/li&gt;&lt;li&gt;CRC Init Word (if any)&lt;/li&gt;&lt;/ul&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="80" y="102" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-11" edge="1" parent="1" source="tMnzrV0gcgn3_OZFiukO-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tMnzrV0gcgn3_OZFiukO-9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-8" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="Determine whether to use default channel number and CRC init word, or use the given ones" vertex="1">
+          <mxGeometry height="70" width="170" x="320" y="202" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-20" edge="1" parent="1" source="tMnzrV0gcgn3_OZFiukO-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tMnzrV0gcgn3_OZFiukO-18" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;div&gt;hex_string_to_bit()&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;Converts the given PDU from hex to binary" vertex="1">
+          <mxGeometry height="60" width="250" x="280" y="312" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-23" edge="1" parent="1" source="tMnzrV0gcgn3_OZFiukO-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tMnzrV0gcgn3_OZFiukO-22" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="CRC24()&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Evaluates the CRC for the binary PDU&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="250" x="280" y="532" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-30" edge="1" parent="1" source="tMnzrV0gcgn3_OZFiukO-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tMnzrV0gcgn3_OZFiukO-25" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Scrabmle()&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Randomizes the bits of the PDU to avoid long streams of 1s or 0s&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="250" x="280" y="762" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-41" edge="1" parent="1" source="tMnzrV0gcgn3_OZFiukO-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tMnzrV0gcgn3_OZFiukO-40" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="gfsk_modulation_fixed_point ()&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Carrys out GFSK modulation, with modulation index of 0.5 and default BT of 0.5&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="250" x="280" y="982" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-21" edge="1" parent="1" source="tMnzrV0gcgn3_OZFiukO-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tMnzrV0gcgn3_OZFiukO-12" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-34" edge="1" parent="1" source="tMnzrV0gcgn3_OZFiukO-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tMnzrV0gcgn3_OZFiukO-33" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-18" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="Save data for Verilog?" vertex="1">
+          <mxGeometry height="100" width="100" x="355" y="402" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-24" edge="1" parent="1" source="tMnzrV0gcgn3_OZFiukO-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tMnzrV0gcgn3_OZFiukO-14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-37" edge="1" parent="1" source="tMnzrV0gcgn3_OZFiukO-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tMnzrV0gcgn3_OZFiukO-35" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-22" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="Save data for Verilog?" vertex="1">
+          <mxGeometry height="100" width="100" x="355" y="622" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-31" edge="1" parent="1" source="tMnzrV0gcgn3_OZFiukO-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tMnzrV0gcgn3_OZFiukO-16" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-38" edge="1" parent="1" source="tMnzrV0gcgn3_OZFiukO-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tMnzrV0gcgn3_OZFiukO-36" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-25" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="Save data for Verilog?" vertex="1">
+          <mxGeometry height="100" width="100" x="355" y="852" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-33" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" value="btle_tx_crc24_test_input.txt" vertex="1">
+          <mxGeometry height="65" width="160" x="90" y="419.5" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-35" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" value="btle_tx_crc24_test_output_ref.txt&lt;div&gt;btle_tx_scramble_test_input.txt&lt;/div&gt;" vertex="1">
+          <mxGeometry height="65" width="190" x="60" y="639.5" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-36" parent="1" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" value="btle_tx_scramble_test_output_ref.txt" vertex="1">
+          <mxGeometry height="65" width="210" x="50" y="869.5" as="geometry" />
+        </mxCell>
+        <mxCell id="tMnzrV0gcgn3_OZFiukO-40" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Upsampled version of the PDU Bits&lt;div&gt;Cosine Components (I)&lt;/div&gt;&lt;div&gt;Sine Components (Q)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="225" x="292.5" y="1092" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
