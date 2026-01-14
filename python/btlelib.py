@@ -9,10 +9,13 @@ import os
 SAVE_FOR_VERILOG = 0 # Change to 1 to save files for verilog test bench
 SAVE_DIR = '' #The directory to store the test vector files
 
+# Upsampling has been changed to 4 in our newest proposal
 SAMPLE_PER_SYMBOL = 8
 NUM_SYMBOL_GAUSS_FILTER_SPAN = 2
+#TODO: Generate different gaussian filters for different BTs and test them.
 BT = 0.5
 MODULATION_INDEX = 0.5
+
 
 def gauss_fir_gen():
 # reference: https://public.ccsds.org/Pubs/413x0g3e1.pdf page 3-2
