@@ -185,7 +185,7 @@ RSSI_SAMPLE_INDEX = 32
 TUNING_STEPS = 0
 
 # Capture the preamble's GFSK signal x(t) = A * cos(φ(t)) + j * A * sin(φ(t)) and sample its I and Q components
-AMPLITUDE = 0.1
+AMPLITUDE = 0.8
 I, Q, t_axis = generatePreambleGFSKSignal(AMPLITUDE=AMPLITUDE)
 
 # Estimate the RSSI values for the captured signal
